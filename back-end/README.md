@@ -14,12 +14,11 @@ back-end/
     services/                // business logic
     models/                  // mongoose schemas
     middlewares/             // auth/error/etc
-    validations/             // validation schemas
+    validation/              // validation schemas
     utils/                   // shared helpers
-    exceptions/              // custom errors
+    errors/                  // custom errors
     dtos/                    // response shaping
     types/                   // global shared TypeScript types
-    tokens/                  // jwt logic
 
     modules/                 // feature-based grouping later
       auth/
@@ -124,7 +123,7 @@ Examples:
 
 Avoid mixing helpers into services.
 
-### exceptions/
+### errors/
 
 Custom application errors.
 
@@ -196,16 +195,3 @@ Feature-based architecture scales better than pure layer-based architecture on l
 - Add logger (`pino` or `winston`)
 - Configure ESLint and Prettier from the start
 - Use strict TypeScript configuration
-
-## Notes
-
-This structure is intentionally minimal while still being scalable.
-
-Good for:
-
-- pet projects
-- auth starters
-- small fullstack apps
-- scalable Express APIs
-
-As the project grows, gradually move toward feature-based architecture instead of keeping everything separated only by technical layers.
