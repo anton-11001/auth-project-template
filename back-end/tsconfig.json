@@ -6,6 +6,10 @@
 
     "rootDir": "./src",
     "outDir": "./dist",
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*"]
+    },
 
     "strict": true,
     "skipLibCheck": true,

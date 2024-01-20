@@ -180,14 +180,6 @@ Feature-based architecture scales better than pure layer-based architecture on l
 
 ## Recommended Improvements
 
-- Use path aliases
-
-```ts id="0v0teb"
-@/services
-@/models
-@/types
-```
-
 - Add central error handler
 - Add async wrapper
 - Validate environment variables on startup
