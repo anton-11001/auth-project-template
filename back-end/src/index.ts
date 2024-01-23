@@ -1,16 +1,17 @@
-import type { Express, Request, Response } from "express";
-
 import express from "express";
 
-const app: Express = express();
+import { connectDatabase } from "@/config/database.js";
 
-const PORT = process.env.PORT || 8000;
+const app = express();
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+const PORT = process.env.PORT ?? "8000";
 
-app.get("/", (request: Request, response: Response) => {
-  const name = request.query.name || "World";
-  response.send(`Hello ${name}`);
-});
+const startServer = async (): Promise<void> => {
+  await connectDatabase();
+
+  app.listen(PORT, () => {
+    console.warn(`Server is running on port ${PORT}`);
+  });
+};
+
+await startServer();
