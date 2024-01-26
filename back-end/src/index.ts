@@ -1,10 +1,9 @@
 import express from "express";
 
 import { connectDatabase } from "@/config/database.js";
+import { PORT } from "@/config/index.js";
 
 const app = express();
-
-const PORT = process.env.PORT ?? "8000";
 
 const startServer = async (): Promise<void> => {
   await connectDatabase();
