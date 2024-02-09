@@ -3,9 +3,8 @@ import type { NextFunction, Request, Response } from "express";
 import { ZodError } from "zod";
 
 import { logger } from "@/config/logger.js";
-import { ApiError } from "@/errors/index.js";
-
 import { STATUS_CODES } from "@/config/status-codes.js";
+import { ApiError } from "@/errors/index.js";
 
 export const errorMiddleware = (
   error: Error,
