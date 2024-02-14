@@ -3,8 +3,9 @@ import cors from "cors";
 import express from "express";
 import helmet from "helmet";
 
-import { connectDatabase, logger, PORT } from "@/config/index.js";
+import { connectDatabase, env, initializeDatabase, logger } from "@/config/index.js";
 import { errorMiddleware, loggerMiddleware } from "@/middlewares/index.js";
+import { apiRouter } from "@/routes/index.js";
 
 const app = express();
 
@@ -17,19 +18,22 @@ app.use(helmet());
 app.use(
   cors({
     credentials: true,
-    origin: process.env.CLIENT_URL,
+    origin: env.CLIENT_URL,
   }),
 );
 
 app.use(loggerMiddleware);
-app.use(errorMiddleware);
+app.use("/api", apiRouter);
 
 const startServer = async (): Promise<void> => {
   await connectDatabase();
+  await initializeDatabase();
 
-  app.listen(PORT, () => {
-    logger.info({ port: PORT }, "Server is running");
+  app.listen(env.PORT, () => {
+    logger.info({ port: env.PORT }, "Server is running");
   });
 };
+
+app.use(errorMiddleware);
 
 await startServer();
