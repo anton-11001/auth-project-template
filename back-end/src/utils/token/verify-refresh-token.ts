@@ -1,8 +1,6 @@
-import type { JwtPayload } from "jsonwebtoken";
+import * as jwt from "jsonwebtoken";
 
 import type { AuthTokenPayload } from "@/types/index.js";
-
-import * as jwt from "jsonwebtoken";
 
 import { env } from "@/config/index.js";
 
